@@ -19,3 +19,6 @@
 /services/product/mvnw.cmd
 /.idea/
 /data/
+/services/order/mvnw
+/services/order/mvnw.cmd
+/services/order/.mvn/
