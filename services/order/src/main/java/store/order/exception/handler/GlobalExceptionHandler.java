@@ -1,27 +1,21 @@
-package store.product.exception.handler;
+package store.order.exception.handler;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import store.product.exception.ProductPurchaseException;
+import store.order.exception.BusinessException;
 
 import java.util.HashMap;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(ProductPurchaseException.class)
-    public ResponseEntity<String> handler(ProductPurchaseException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-    }
-
-    @ExceptionHandler(DuplicateKeyException.class)
-    public ResponseEntity<String> handler(DuplicateKeyException e) {
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<String> handler(BusinessException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMsg());
     }
 
     @ExceptionHandler(EntityNotFoundException.class)

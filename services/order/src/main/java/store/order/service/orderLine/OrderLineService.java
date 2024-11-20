@@ -3,7 +3,11 @@ package store.order.service.orderLine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import store.order.model.orderline.OrderLineRequest;
+import store.order.model.orderline.OrderLineResponse;
 import store.order.repository.orderLine.OrderLineRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +19,9 @@ public class OrderLineService {
         var order = mapper.toOrderLine(request);
         return repository.save(order).getId();
 
+    }
+
+    public List<OrderLineResponse> findAllByOrderId(Integer orderId) {
+        return repository.findAllByOrderId(orderId).stream().map(mapper::toOrderLineResponse).collect(Collectors.toList());
     }
 }
