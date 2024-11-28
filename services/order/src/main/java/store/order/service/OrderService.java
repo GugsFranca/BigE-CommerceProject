@@ -10,6 +10,8 @@ import store.order.model.order.OrderConfirmation;
 import store.order.model.order.OrderRequest;
 import store.order.model.order.OrderResponse;
 import store.order.model.orderline.OrderLineRequest;
+import store.order.model.payment.PaymentClient;
+import store.order.model.payment.PaymentRequest;
 import store.order.model.product.ProductClient;
 import store.order.model.product.PurchaseRequest;
 import store.order.repository.OrderRepository;
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class OrderService {
+
+    private final PaymentClient paymentClient;
 
     private final ProductClient productClient;
     private final CustomerClient customerClient;
@@ -46,7 +50,16 @@ public class OrderService {
 
         }
 
-        // todo start payment process
+        // persist payment
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+                );
+
+        paymentClient.requestOrderPayment(paymentRequest);
 
         //send the order confirmation --> notification-ms (kafka)
         orderProducer.sendOrderConfirmation(

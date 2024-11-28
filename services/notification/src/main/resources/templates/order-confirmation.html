@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="styles/order-confirmation.css">
+</head>
+<body>
+<div class="email-container">
+    <!-- Header Section -->
+    <div class="email-header">
+        <h1>Order Confirmation</h1>
+    </div>
+
+    <!-- Body Section -->
+    <div class="email-body">
+        <p>Dear <span th:text="${customerName}">Customer</span>,</p>
+        <p>Thank you for your order! We're excited to confirm that your order has been successfully placed.</p>
+
+        <div class="order-details">
+            <p><strong>Order Reference:</strong> <span th:text="${orderReference}">N/A</span></p>
+            <p><strong>Total Amount:</strong> $<span th:text="${amount}">0.00</span></p>
+        </div>
+
+        <p>Here are the details of your order:</p>
+
+        <table class="product-table">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}">Product Name</td>
+                <td th:text="${product.quantity}">1</td>
+                <td th:text="${product.price}">$0.00</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>If you have any questions about your order, feel free to <a href="mailto:gustavoffonsec4@gmail.com">contact us</a>. We're here to help!</p>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="email-footer">
+        <p>&copy; 2024 Your Store. All rights reserved.</p>
+        <p><a href="https://none.site">Visit our website</a> | <a href="mailto:gustavoffonsec4@gmail.com">Unsubscribe</a></p>
+    </div>
+</div>
+</body>
+</html>

@@ -9,8 +9,6 @@ import java.math.BigDecimal;
 /**
  * DTO for {@link Payment}
  */
-@EqualsAndHashCode(callSuper = true)
-@Value
 public record PaymentRequest
         (Integer id,
          BigDecimal amount,
