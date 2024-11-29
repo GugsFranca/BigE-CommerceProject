@@ -8,6 +8,9 @@ import store.order.model.order.OrderResponse;
 @Service
 public class OrderMapper {
     public Order toOrder(OrderRequest request) {
+        if (request == null) {
+            return null;
+        }
         return Order.builder()
                 .id(request.id())
                 .customerId(request.customerId())
