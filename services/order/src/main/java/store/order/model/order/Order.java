@@ -24,6 +24,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true,  nullable = false)
     private String reference;
     private BigDecimal totalAmount;
 
@@ -36,7 +37,7 @@ public class Order {
 
     @CreatedDate
     @Column(updatable = false,nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdDate;
 
     @LastModifiedDate
     @Column(insertable = false)

@@ -32,8 +32,8 @@ public class NotificationConsumer {
                         .notificationDate(LocalDateTime.now())
                         .paymentConfirmation(paymentConfirmation).build()
         );
-        var customerName = paymentConfirmation.firstname() + " " + paymentConfirmation.lastname();
-        emailService.sendPaymentSuccessEmail(paymentConfirmation.email(), customerName, paymentConfirmation.amount(), paymentConfirmation.orderReference());
+        var customerName = paymentConfirmation.customerFirstname() + " " + paymentConfirmation.customerLastname();
+        emailService.sendPaymentSuccessEmail(paymentConfirmation.customerEmail(), customerName, paymentConfirmation.amount(), paymentConfirmation.orderReference());
     }
 
     @KafkaListener(topics = "order-topic")
@@ -46,8 +46,8 @@ public class NotificationConsumer {
                         .orderConfirmation(orderConfirmation).build()
         );
 
-        var customerName = orderConfirmation.customer().firstname() + " " + orderConfirmation.customer().lastname();
-        emailService.sendOrderConfirmationEmail(orderConfirmation.customer().email(), customerName, orderConfirmation.totalAmount(), orderConfirmation.orderReference(), orderConfirmation.product());
+        var customerName = orderConfirmation.customer().firstName() + " " + orderConfirmation.customer().lastName();
+        emailService.sendOrderConfirmationEmail(orderConfirmation.customer().email(), customerName, orderConfirmation.totalAmount(), orderConfirmation.orderReference(), orderConfirmation.products());
     }
 
 }

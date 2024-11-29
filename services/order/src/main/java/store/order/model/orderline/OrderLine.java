@@ -12,7 +12,7 @@ import store.order.model.order.Order;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "customer_order")
+@Table(name = "customer_line")
 public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
