@@ -7,6 +7,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import store.customer.exception.EmailAlreadyRegisteredException;
 import store.customer.exception.CustomerNotFoundException;
 import store.customer.exception.ErrorResponse;
 
@@ -17,6 +18,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<String> handler(CustomerNotFoundException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMsg());
+    }
+
+    @ExceptionHandler(EmailAlreadyRegisteredException.class)
+    public ResponseEntity<String> handler(EmailAlreadyRegisteredException e){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMsg());
     }
 
     @ExceptionHandler(DuplicateKeyException.class)

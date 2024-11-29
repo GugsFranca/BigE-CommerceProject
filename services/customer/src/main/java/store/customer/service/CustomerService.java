@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import store.customer.domain.Customer;
 import store.customer.domain.CustomerRequest;
 import store.customer.domain.CustomerResponse;
+import store.customer.exception.EmailAlreadyRegisteredException;
 import store.customer.exception.CustomerNotFoundException;
 import store.customer.repository.CustomerRepository;
 
@@ -21,8 +22,11 @@ public class CustomerService {
 
 
     public String createCustomer(CustomerRequest request) {
-        if (existById(request.id())){
+        if (request.id() != null && existById(request.id())){
             throw new DuplicateKeyException("Customer already has the provider ID:: " + request.id());
+        }
+        if (repository.existsByEmail(request.email())){
+            throw new EmailAlreadyRegisteredException("This e-mail address has already been registered:: " + request.email());
         }
         var customer = repository.save(mapper.toCustomer(request));
         return customer.getId();
