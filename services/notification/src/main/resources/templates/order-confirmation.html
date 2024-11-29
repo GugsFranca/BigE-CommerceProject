@@ -1,9 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Order Confirmation</title>
-    <link rel="stylesheet" href="styles/order-confirmation.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9fb;
+            margin: 0;
+            padding: 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        .email-header {
+            background-color: #007bff; /* Azul elegante */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        .email-body {
+            padding: 20px;
+            color: #333333;
+        }
+        .email-body p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+        .order-details {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9f3fe; /* Azul claro */
+            border-radius: 5px;
+            border: 1px solid #cde0f7;
+        }
+        .order-details strong {
+            color: #007bff; /* Azul elegante */
+        }
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .product-table th, .product-table td {
+            padding: 10px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+        .product-table th {
+            background-color: #007bff; /* Azul elegante */
+            color: #ffffff;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f4f6f9;
+            color: #666666;
+            font-size: 12px;
+        }
+        .email-footer a {
+            color: #007bff; /* Azul elegante */
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <div class="email-container">

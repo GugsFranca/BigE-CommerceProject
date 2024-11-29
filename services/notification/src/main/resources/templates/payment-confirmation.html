@@ -1,9 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Confirmation</title>
-    <link rel="stylesheet" href="styles/payment-confirmation.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        .email-header {
+            background-color: #5cb85c;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+            color: #333333;
+        }
+        .email-body p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+        .order-details {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #e5e5e5;
+        }
+        .order-details strong {
+            color: #5cb85c;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f3f4f6;
+            color: #666666;
+            font-size: 12px;
+        }
+        .email-footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="email-container">
@@ -14,7 +70,7 @@
 
     <!-- Body Section -->
     <div class="email-body">
-        <p>Dear <span th:text="${customerName}">Customer</span>,</p>
+        <p>Dear <span th:text="${customerName}" style="font-weight: bold;">Customer</span>,</p>
         <p>Thank you for your payment! We are pleased to confirm that your transaction has been successfully processed.</p>
 
         <div class="order-details">
@@ -28,7 +84,10 @@
     <!-- Footer Section -->
     <div class="email-footer">
         <p>&copy; 2024 Your Store. All rights reserved.</p>
-        <p><a href="https://none.site">Visit our website</a> | <a href="mailto:gustavoffonsec4@gmail.com">Unsubscribe</a></p>
+        <p>
+            <a href="https://none.site">Visit our website</a> |
+            <a href="mailto:gustavoffonsec4@gmail.com">Unsubscribe</a>
+        </p>
     </div>
 </div>
 </body>
